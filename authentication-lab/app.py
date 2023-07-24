@@ -14,8 +14,9 @@ const firebaseConfig = {
   "messagingSenderId": "503931398850",
   "appId": "1:503931398850:web:1849895879eaad0a9aa95b",
   "measurementId": "G-TNSNY8XXLQ",
-  "databaseURL": ""
+  "databaseURL": "https://example-628cb-default-rtdb.firebaseio.com/"
 };
+
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -32,7 +33,9 @@ auth.sign_in_with_email_and_password(email, password)
            error = "Authentication failed"
            return	render_template("signin.html")
 
-
+firebase = pyrebase	.initialize_app(const firebaseConfig)
+auth = firebase	.auth()
+db = firebase.database
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
